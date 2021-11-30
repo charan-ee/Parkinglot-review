@@ -11,5 +11,7 @@ public class Types {
         FREE_COUNT, FREE_SLOTS, OCCUPIED_SLOTS
     }
 
-    public enum Command {}
+    public enum Command {
+        create_parking_lot, park_vehicle, unpark_vehicle, display
+    }
 }

@@ -94,7 +94,7 @@ public class ParkingLot {
         return null;
     }
 
-    public void DisplaySlots(Types.DisplayType displayType, Types.VehicleType vehicleType){
+    public void displaySlots(Types.DisplayType displayType, Types.VehicleType vehicleType){
         switch (vehicleType){
             case CAR -> {
                 CarDisplay carDisplay = new CarDisplay();

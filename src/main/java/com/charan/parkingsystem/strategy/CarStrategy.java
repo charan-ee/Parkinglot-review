@@ -14,7 +14,7 @@ public class CarStrategy implements ParkStrategy {
         for (ParkingFloor floor : floorList) {
             for (ParkingSlot slot: floor.getFloorSlots()) {
                 if (slot.getIsFree() && slot.getSlotID() > 3) {
-                    slot.setOccupied();
+                    slot.setOccupied(false);
                     ticket = new Ticket(floor, slot);
                     return ticket;
                 }

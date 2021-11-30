@@ -16,7 +16,7 @@ class ParkingSlotTest {
 
     @Test
     void getIsFreeTest() {
-        slot.setOccupied();
+        slot.setOccupied(false);
         boolean status = slot.getIsFree();
 
         Assertions.assertFalse(status);

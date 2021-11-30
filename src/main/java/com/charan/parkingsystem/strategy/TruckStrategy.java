@@ -15,7 +15,7 @@ public class TruckStrategy implements ParkStrategy {
         for (ParkingFloor floor : floorList) {
             for (ParkingSlot slot: floor.getFloorSlots()) {
                 if (slot.getIsFree() && slot.getSlotID() == start) {
-                    slot.setOccupied();
+                    slot.setOccupied(false);
                     ticket = new Ticket(floor, slot);
                     return ticket;
                 }

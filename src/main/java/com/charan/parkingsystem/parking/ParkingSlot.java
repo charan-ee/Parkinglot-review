@@ -28,8 +28,8 @@ public class ParkingSlot {
         isFree = true;
     }
 
-    public void setOccupied() {
-        isFree = false;
+    public void setOccupied(boolean status) {
+        isFree = status;
     }
 
     public Types.VehicleType getSpotType() {

@@ -7,6 +7,8 @@ import com.charan.parkingsystem.strategy.TruckStrategy;
 import com.charan.parkingsystem.vehicle.Bike;
 import com.charan.parkingsystem.vehicle.Car;
 import com.charan.parkingsystem.vehicle.Truck;
+import com.charan.parkingsystem.Types.VehicleType;
+import com.charan.parkingsystem.Types.Command;
 
 import java.util.Scanner;
 
@@ -24,28 +26,28 @@ public class App {
                 break;
             }
 
-            switch (commands[0]) {
-                case "create_parking_lot" -> {
+            switch (Command.valueOf(commands[0])) {
+                case create_parking_lot -> {
                     parkingLot = ParkingLot.init("PR1234", Integer.parseInt(commands[1]), Integer.parseInt(commands[2]));
                     System.out.println(parkingLot.toString());
 
                 }
-                case "display" -> {
-                    parkingLot.DisplaySlots(Types.DisplayType.valueOf(commands[1].toUpperCase()), Types.VehicleType.valueOf(commands[2].toUpperCase()));
+                case display -> {
+                    parkingLot.displaySlots(Types.DisplayType.valueOf(commands[1].toUpperCase()), Types.VehicleType.valueOf(commands[2].toUpperCase()));
                 }
-                case "park_vehicle" -> {
-                    if (commands[1].toUpperCase().equals("CAR")) {
+                case park_vehicle -> {
+                    if (VehicleType.valueOf(commands[1].toUpperCase()).equals(VehicleType.CAR)) {
                         Car car = new Car(commands[2], commands[3]);
                         parkingLot.parkVehicle(new CarStrategy(), car);
-                    } else if (commands[1].toUpperCase().equals("BIKE")) {
+                    } else if (VehicleType.valueOf(commands[1].toUpperCase()).equals(VehicleType.BIKE)) {
                         Bike bike = new Bike(commands[2], commands[3]);
                         parkingLot.parkVehicle(new BikeStrategy(), bike);
-                    } else if (commands[1].toUpperCase().equals("TRUCK")) {
+                    } else if (VehicleType.valueOf(commands[1].toUpperCase()).equals(VehicleType.TRUCK)) {
                         Truck truck = new Truck(commands[2], commands[3]);
                         parkingLot.parkVehicle(new TruckStrategy(), truck);
                     }
                 }
-                case "unpark_vehicle" -> {
+                case unpark_vehicle -> {
                     parkingLot.unParkVehicle(commands[1].toUpperCase());
                 }
                 default -> System.out.println("Please enter the right command (Enter 'q' to exit the terminal)" );
